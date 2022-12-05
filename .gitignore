@@ -1,0 +1,7 @@
+node_modules
+.vsconde
+
+.DS_Store
+/ios/Pods/
+
+.gradle
