@@ -1,11 +1,12 @@
-import {View, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import React from 'react';
+import {Text} from 'native-base';
 
 const Welcome = () => {
   return (
-    <View>
-      <Text>Welcome</Text>
-    </View>
+    <SafeAreaView>
+      <Text color="black">Welcome</Text>
+    </SafeAreaView>
   );
 };
 
