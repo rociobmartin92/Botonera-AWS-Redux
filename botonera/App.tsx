@@ -2,19 +2,20 @@
 import {NativeBaseProvider} from 'native-base';
 import {theme} from './src/theme';
 import RootNavigation from './src/stack';
-import {Amplify, Auth} from 'aws-amplify';
+import {Amplify} from 'aws-amplify';
 import awsconfig from './src/aws-exports';
-import {withAuthenticator} from '@aws-amplify/ui-react-native';
+import {Authenticator} from '@aws-amplify/ui-react-native';
+
+Amplify.configure(awsconfig);
 
 const App = () => {
-  Amplify.configure(awsconfig);
-
-  
   return (
     <NativeBaseProvider theme={theme}>
-      <RootNavigation />
+      <Authenticator.Provider>
+        <RootNavigation />
+      </Authenticator.Provider>
     </NativeBaseProvider>
   );
 };
 
-export default withAuthenticator(App);
+export default App;

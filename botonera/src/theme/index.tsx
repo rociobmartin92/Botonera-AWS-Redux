@@ -2,19 +2,16 @@ import {extendTheme} from 'native-base';
 
 export const theme = extendTheme({
   colors: {
-    primario: {
-      light: '#65bcc9',
-      medium: '#569ea9',
-      heavy: '#427780',
+    bot: {
+      yellow: '#FED90F',
+      lightBlue: '#70D1FE',
+      blue: '#009DDC',
+      dark: '#424F46',
+      gold: '#D1B271',
+      red: '#D1B271',
+      lightGreen: '#7BC242',
+      green: '#00947E',
+      pink: '#ff81c1',
     },
-    secundario: {
-      light: '#d47a6c',
-      medium: '#A96156',
-      heavy: '#7d4840',
-    },
-  },
-  config: {
-    // Changing initialColorMode to 'dark'
-    initialColorMode: 'dark',
   },
 });

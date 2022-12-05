@@ -13,7 +13,11 @@ const RootNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="welcome">
-        <Stack.Screen name="welcome" component={Welcome} />
+        <Stack.Screen
+          options={{title: ''}}
+          name="welcome"
+          component={Welcome}
+        />
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="register" component={Register} />
