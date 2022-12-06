@@ -19,18 +19,18 @@ const img = require('../assets/boots.jpeg');
 const Welcome = ({navigation}: any) => {
   return (
     <SafeAreaView>
-      {/* <Box mt={5} mb={10} alignItems="center">
-        <Text fontSize={25} color="#d45f83" mb={1}>
+      <Box mt={5} mb={10} alignItems="center">
+        <Text fontSize={24} color="#d45f83" mb={1}>
           ¡Te damos la bienvenida!
         </Text>
-        <Image
+        {/* <Image
           borderRadius={10}
           alt="imagen dona"
           source={donut}
           width={7}
           height={7}
-        />
-      </Box> */}
+        /> */}
+      </Box>
       <Box alignItems="center" mt={10}>
         <Image
           borderRadius={10}
