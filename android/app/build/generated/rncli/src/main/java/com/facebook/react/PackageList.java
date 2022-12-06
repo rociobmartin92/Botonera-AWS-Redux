@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/netinfo
 import com.reactnativecommunity.netinfo.NetInfoPackage;
+// amazon-cognito-identity-js
+import com.amazonaws.RNAWSCognitoPackage;
 // react-native-bootsplash
 import com.zoontek.rnbootsplash.RNBootSplashPackage;
 // react-native-safe-area-context
@@ -70,6 +72,7 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new AsyncStoragePackage(),
       new NetInfoPackage(),
+      new RNAWSCognitoPackage(),
       new RNBootSplashPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),

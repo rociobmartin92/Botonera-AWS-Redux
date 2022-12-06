@@ -31,9 +31,9 @@ const Welcome = ({ navigation }: any) => {
           height={7}
         /> */}
       </Box>
-      <Box alignItems="center"s>
+      <Box alignItems="center">
         <Image
-          borderRadius={10}
+          borderRadius={8}
           alt="imagen logo"
           source={img}
           width={250}
@@ -42,7 +42,7 @@ const Welcome = ({ navigation }: any) => {
         <Button
           mt={6}
           mb={3}
-          _text={{ color: "bot.green", fontSize: 16 }}
+          _text={{ color: "bot.blue", fontSize: 16 }}
           _pressed={{ backgroundColor: "transparent" }}
           borderWidth="1"
           borderColor="#d45f83"
@@ -55,7 +55,7 @@ const Welcome = ({ navigation }: any) => {
         </Button>
         <Button
           borderRadius={7}
-          _text={{ color: "bot.green", fontSize: 16 }}
+          _text={{ color: "bot.blue", fontSize: 16 }}
           _pressed={{ backgroundColor: "transparent" }}
           borderWidth="1"
           borderColor="#d45f83"

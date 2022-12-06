@@ -1,49 +1,83 @@
-import {Box, Button, Input, Text} from 'native-base';
-import React, {useState} from 'react';
-import {Auth} from 'aws-amplify';
+import { Box, Button, Input, Text } from "native-base";
+import React, { useState } from "react";
+import { Auth } from "aws-amplify";
 
-const Register = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Register = ({ navigation }: any) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [codeSection, setCodeSection] = useState(false);
+  const [code, setCode] = useState("");
 
   async function signUp() {
     try {
-      const {user} = await Auth.signUp({
+      const { user } = await Auth.signUp({
         username,
         password,
-
+        attributes: {
+          email,
+        },
         autoSignIn: {
-          // optional - enables auto sign in after user is confirmed
           enabled: true,
         },
       });
-      console.log(JSON.stringify(user, null, ' '));
+      console.log(JSON.stringify(user, null, " "));
+      setCodeSection(true);
     } catch (error) {
-      console.log('error signing up:', error);
+      console.log("error signing up:", error);
+    }
+  }
+
+  async function confirmSignUp() {
+    try {
+      await Auth.confirmSignUp(username, code);
+      navigation.navigate("login");
+    } catch (error) {
+      console.log("error confirming sign up", error);
     }
   }
 
   return (
     <Box mx={10}>
       <Text>Registro</Text>
-      <Box my={3}>
-        <Text>Nombre de Usuario</Text>
+      <Box>
+        <Text>Usuario</Text>
         <Input
           variant="underlined"
-          _focus={{background: 'transparent'}}
           placeholder="Ingresá un nombre de usuario"
-          onChangeText={user => setUsername(user)}
+          onChangeText={(user) => setUsername(user)}
+        />
+      </Box>
+      <Box my={3}>
+        <Text>Email</Text>
+        <Input
+          variant="underlined"
+          placeholder="Ingresá tu email"
+          onChangeText={(email) => setEmail(email)}
         />
       </Box>
       <Box>
         <Text>Contraseña</Text>
         <Input
+          type="password"
           variant="underlined"
-          placeholder="Ingresá una contraseña"
-          onChangeText={pass => setPassword(pass)}
+          placeholder="Ingresá una contraseña mayor a 6 dígitos con una letra mayúscula"
+          onChangeText={(pass) => setPassword(pass)}
         />
-        <Button onPress={() => signUp()}> Crear usuario</Button>
       </Box>
+
+      <Button onPress={() => signUp()}> Crear usuario</Button>
+      {codeSection && (
+        <Box>
+          <Text>Código</Text>
+          <Input
+            variant="underlined"
+            placeholder="Ingresá el código recibido en tu email"
+            onChangeText={(emailCode) => setCode(emailCode)}
+          />
+          <Button onPress={() => confirmSignUp()}> Confirmar</Button>
+        </Box>
+      )}
     </Box>
   );
 };

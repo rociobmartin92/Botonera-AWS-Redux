@@ -5068,6 +5068,17 @@ amazon-cognito-identity-js@6.0.1:
     isomorphic-unfetch "^3.0.0"
     js-cookie "^2.2.1"
 
+amazon-cognito-identity-js@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-6.0.1.tgz#d0de66a6cbed41413b202066f7b2acbb35c00de8"
+  integrity sha512-j96DHquV9Jiabs+3/fuQwrSK+1WcxzmEfRuZlhajGxxUplzjt046pedCYiSkcFY+Wilun+I57iri5dXiaNDOsg==
+  dependencies:
+    "@aws-crypto/sha256-js" "1.2.2"
+    buffer "4.9.2"
+    fast-base64-decode "^1.0.0"
+    isomorphic-unfetch "^3.0.0"
+    js-cookie "^2.2.1"
+
 anser@^1.4.9:
   version "1.4.10"
   resolved "https://registry.npmjs.org/anser/-/anser-1.4.10.tgz"
@@ -5254,6 +5265,13 @@ atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+
+aws-amplify-react-native@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/aws-amplify-react-native/-/aws-amplify-react-native-7.0.1.tgz#e75301741ac2201d32f90f480b4e20665722bbf0"
+  integrity sha512-Www+D+7mZixOI66dKa6T+dxL5CthSVWsojDhsO5J/PfCIbNl0Em0JhO3gX35JL70hB6iDiEQZJBncXGy96QA7g==
+  dependencies:
+    buffer "^5.2.1"
 
 aws-amplify@^5.0.4:
   version "5.0.4"
@@ -5546,7 +5564,7 @@ buffer@4.9.2:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-buffer@^5.2.0, buffer@^5.5.0:
+buffer@^5.2.0, buffer@^5.2.1, buffer@^5.5.0:
   version "5.7.1"
   resolved "https://registry.npmjs.org/buffer/-/buffer-5.7.1.tgz"
   integrity sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==
