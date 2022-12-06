@@ -13,36 +13,52 @@ function SignOutButton() {
   );
 }
 
-const Welcome = ({navigation}: any) => {
-  const img = require('../assets/images.jpeg');
+const img = require('../assets/boots.jpeg');
+// const donut = require('../assets/donut.png');
 
+const Welcome = ({navigation}: any) => {
   return (
     <SafeAreaView>
-      <Box mt={5} alignItems="center">
-        <Text fontSize={25} fontWeight={500} color="bot.dark" mb={1}>
+      {/* <Box mt={5} mb={10} alignItems="center">
+        <Text fontSize={25} color="#d45f83" mb={1}>
           ¡Te damos la bienvenida!
         </Text>
-        <Image borderRadius={5} alt="imagen logo" source={img} width={250} height={180} />
-      </Box>
+        <Image
+          borderRadius={10}
+          alt="imagen dona"
+          source={donut}
+          width={7}
+          height={7}
+        />
+      </Box> */}
       <Box alignItems="center" mt={10}>
+        <Image
+          borderRadius={10}
+          alt="imagen logo"
+          source={img}
+          width={250}
+          height={180}
+        />
         <Button
+          mt={6}
           mb={3}
           _text={{color: 'bot.green', fontSize: 17}}
-          _pressed={{backgroundColor: 'bot.blue'}}
+          _pressed={{backgroundColor: 'transparent'}}
           borderWidth="1"
           borderColor="bot.gold"
-          borderRadius={10}
-          width="60%"
+          borderRadius={7}
+          width="65%"
           variant="outline"
           onPress={() => navigation.navigate('login')}>
           Ingresar
         </Button>
         <Button
-          borderRadius={10}
-          _text={{color: 'bot.blue', fontSize: 17}}
+          borderRadius={7}
+          _text={{color: 'bot.green', fontSize: 17}}
+          _pressed={{backgroundColor: 'transparent'}}
           borderWidth="1"
           borderColor="bot.gold"
-          width="60%"
+          width="65%"
           variant="outline"
           onPress={() => navigation.navigate('register')}>
           Registrarme

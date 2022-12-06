@@ -11,7 +11,8 @@ export const theme = extendTheme({
       red: '#D1B271',
       lightGreen: '#7BC242',
       green: '#00947E',
-      pink: '#ff81c1',
+      pink: '#ED91AD',
+      brown: '#9c5b01',
     },
   },
 });

@@ -1,4 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
+import React, {useEffect} from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 import {NativeBaseProvider} from 'native-base';
 import {theme} from './src/theme';
 import RootNavigation from './src/stack';
@@ -9,6 +11,10 @@ import {Authenticator} from '@aws-amplify/ui-react-native';
 Amplify.configure(awsconfig);
 
 const App = () => {
+  useEffect(() => {
+    RNBootSplash.hide({fade: true, duration: 500});
+  }, []);
+
   return (
     <NativeBaseProvider theme={theme}>
       <Authenticator.Provider>
