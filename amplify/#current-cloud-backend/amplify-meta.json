@@ -1,0 +1,57 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-botonera-staging-05824-authRole",
+      "UnauthRoleArn": "arn:aws:iam::344837031447:role/amplify-botonera-staging-05824-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::344837031447:role/amplify-botonera-staging-05824-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-botonera-staging-05824-deployment",
+      "UnauthRoleName": "amplify-botonera-staging-05824-unauthRole",
+      "StackName": "amplify-botonera-staging-05824",
+      "StackId": "arn:aws:cloudformation:sa-east-1:344837031447:stack/amplify-botonera-staging-05824/ebd0b3e0-7437-11ed-a3be-02c80a445eac",
+      "AmplifyAppId": "d2a5e6cgrr2szr"
+    }
+  },
+  "auth": {
+    "Botonera": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 6,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_UPPERCASE"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-botonera-staging-05824-deployment/amplify-cfn-templates/auth/Botonera-cloudformation-template.json",
+        "logicalId": "authBotonera"
+      },
+      "lastPushTimeStamp": "2022-12-05T16:11:56.023Z",
+      "output": {
+        "UserPoolId": "sa-east-1_Ysg3HJccW",
+        "AppClientIDWeb": "3pd27mgttod9h14qei34vgkj3i",
+        "AppClientID": "17t1o2tpnte3kpuj6hdhg3hu0h",
+        "IdentityPoolId": "sa-east-1:1f5f7e21-3c54-41d0-8cda-b09c0efcac47",
+        "UserPoolArn": "arn:aws:cognito-idp:sa-east-1:344837031447:userpool/sa-east-1_Ysg3HJccW",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "Botonera"
+      },
+      "lastPushDirHash": "Y8X6Sr0Q1tFZP1jnndcsHp4ZysQ="
+    }
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+
+/ios/Pods
+
+/android/.gradle
+
+.vscode
+
