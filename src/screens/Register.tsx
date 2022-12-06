@@ -38,6 +38,18 @@ const Register = ({ navigation }: any) => {
     }
   }
 
+  function listenToAutoSignInEvent() {
+    Hub.listen("auth", ({ payload }) => {
+      const { event } = payload;
+      if (event === "autoSignIn") {
+        const user = payload.data;
+        // assign user
+      } else if (event === "autoSignIn_failure") {
+        // redirect to sign in page
+      }
+    });
+  }
+
   return (
     <Box mx={10}>
       <Text>Registro</Text>
