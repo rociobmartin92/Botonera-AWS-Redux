@@ -1,6 +1,7 @@
 import { Box, Button, Input, Text } from "native-base";
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
+import { Hub } from "aws-amplify";
 
 const Register = ({ navigation }: any) => {
   const [username, setUsername] = useState("");
@@ -31,6 +32,15 @@ const Register = ({ navigation }: any) => {
   async function confirmSignUp() {
     try {
       await Auth.confirmSignUp(username, code);
+      Hub.listen("auth", ({ payload }) => {
+        const { event } = payload;
+        if (event === "autoSignIn") {
+          const user = payload.data;
+          // assign user
+        } else if (event === "autoSignIn_failure") {
+          // redirect to sign in page
+        }
+      });
       navigation.navigate("login");
     } catch (error) {
       console.log("error confirming sign up", error);
