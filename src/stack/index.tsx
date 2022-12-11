@@ -12,14 +12,23 @@ const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName="welcome"
-      >
-        <Stack.Screen name="welcome" component={Welcome} />
+      <Stack.Navigator screenOptions={{ headerShown: true, headerBackTitle: "Atras" }} initialRouteName="welcome">
+        <Stack.Screen
+          name="welcome"
+          options={{
+            headerShown: false,
+          }}
+          component={Welcome}
+        />
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="login" component={Login} />
-        <Stack.Screen name="register" component={Register} />
+        <Stack.Screen
+          name="register"
+          options={{
+            title: "Registrate",
+          }}
+          component={Register}
+        />
         <Stack.Screen name="password" component={ForgotPassword} />
       </Stack.Navigator>
     </NavigationContainer>
