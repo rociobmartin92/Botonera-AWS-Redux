@@ -4,18 +4,29 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { usePaperTheme } from "../theme/types";
 import { Spacing } from "../theme";
 import { View, Text } from "react-native";
-import { CredentialFields } from "ui";
-import { Button } from "react-native-paper";
+import { CredentialFields, FormSubmitButton } from "ui";
+import { useNavigation } from "@react-navigation/native";
+
+type LoginFormValues = {
+  username: string;
+  password: string;
+};
 
 const Login = () => {
+  const navigator = useNavigation();
   const theme = usePaperTheme();
+  const initialValues: LoginFormValues = {
+    username: "",
+    password: "",
+  };
 
-  async function signIn() {
-    // try {
-    //   const user = await Auth.signIn(username, password);
-    // } catch (error) {
-    //   console.log("error signing in", error);
-    // }
+  async function handleSubmit({ username, password }: LoginFormValues) {
+    try {
+      const user = await Auth.signIn(username, password);
+      navigator.navigate({ name: "home" });
+    } catch (error) {
+      console.log("error signing in", error);
+    }
   }
 
   return (
@@ -23,10 +34,9 @@ const Login = () => {
       <View style={{ marginBottom: Spacing.md }}>
         <Text style={theme.fonts.headlineMedium}>Iniciar Sesión</Text>
       </View>
-      <CredentialFields />
-      <Button mode="contained" onPress={() => signIn()}>
-        Iniciar Sesión
-      </Button>
+      <CredentialFields initialValues={initialValues} onSubmit={handleSubmit}>
+        <FormSubmitButton>Iniciar Sesión</FormSubmitButton>
+      </CredentialFields>
     </SafeAreaView>
   );
 };

@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
-import { TextInput } from "react-native-paper";
+import { FormTextInput, FormPasswordInput, Form } from "ui";
 import { usePaperTheme } from "../../theme/types";
+import { FormProps } from "../Form/Form";
 
-interface CredentialFieldsProps {}
+type FormValues = {
+  [i: string]: unknown;
+  username: string;
+  password: string;
+};
 
-const CredentialFields = (props: CredentialFieldsProps) => {
+interface CredentialFieldsProps {
+  children: any;
+  initialValues: FormProps<FormValues>["initialValues"];
+  onSubmit: (values: FormValues) => void;
+}
+
+const CredentialFields = ({ children, initialValues, onSubmit }: CredentialFieldsProps) => {
   const theme = usePaperTheme();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
-    <>
+    <Form initialValues={initialValues} onSubmit={onSubmit}>
       <View style={theme.layout.inputContainer}>
         <Text>Usuario</Text>
-        <TextInput
-          mode="outlined"
-          placeholder="Ingresá tu nombre de usuario"
-          onChangeText={(user) => setUsername(user)}
-          value={username}
-        />
+        <FormTextInput label="Username" name="username" mode="outlined" placeholder="Ingresá tu nombre de usuario" />
       </View>
       <View style={theme.layout.inputContainer}>
         <Text>Contraseña</Text>
-        <TextInput
-          mode="outlined"
-          placeholder="Ingresá tu contraseña"
-          onChangeText={(pass) => setPassword(pass)}
-          value={password}
-        />
+        <FormPasswordInput label="Password" name="password" mode="outlined" placeholder="Ingresá tu contraseña" />
       </View>
-    </>
+      {children}
+    </Form>
   );
 };
 
