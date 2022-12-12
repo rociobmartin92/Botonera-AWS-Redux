@@ -20,8 +20,8 @@ const RootNavigation = () => {
           }}
           component={Welcome}
         />
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="login" component={Login} />
+        {/* <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="login" component={Login} options={{ title: "" }} />
         <Stack.Screen
           name="register"
           options={{
@@ -29,7 +29,7 @@ const RootNavigation = () => {
           }}
           component={Register}
         />
-        <Stack.Screen name="password" component={ForgotPassword} />
+        <Stack.Screen name="password" component={ForgotPassword} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -23,6 +23,7 @@
     "baseUrl": "./",
     "paths": {
       "ui": ["src/ui/index"]
+      // "theme": ["src/theme/index"]
     }
   }
 }
