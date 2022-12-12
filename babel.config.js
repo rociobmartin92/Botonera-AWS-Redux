@@ -8,7 +8,7 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js", "jsx"],
         alias: {
           ui: "./src/ui/index",
-          // theme: "./src/theme/index",
+          theme: "./src/theme/index",
         },
       },
     ],

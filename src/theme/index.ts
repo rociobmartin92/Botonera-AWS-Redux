@@ -20,8 +20,6 @@ export const nativeBaseTheme = extendTheme({
   },
 });
 
-export const BASE_UNIT = 16;
-
 export enum Spacing {
   sm = 8,
   md = 16,
