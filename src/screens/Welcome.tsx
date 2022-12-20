@@ -1,71 +1,39 @@
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import React from "react";
-import { Box, Button, Image, Text, VStack } from "native-base";
-
+import { Img } from "ui";
+import { Button } from "react-native-paper";
 import { useAuthenticator } from "@aws-amplify/ui-react-native";
+import { usePaperTheme } from "../theme/types";
 
 function SignOutButton() {
   const { signOut } = useAuthenticator();
-  return (
-    <>
-      <Button onPress={signOut}>Salir de mi cuenta</Button>
-    </>
-  );
+  return <Button onPress={signOut}>Salir de mi cuenta</Button>;
 }
 
 const img = require("../assets/boots.jpeg");
-// const donut = require('../assets/donut.png');
 
 const Welcome = ({ navigation }: any) => {
+  const theme = usePaperTheme();
+
   return (
-    <SafeAreaView>
-      <Box mt={5} mb={10} alignItems="center">
-        {/* <Text fontSize={20} color="#d45f83" mb={1}>
-          ¡Te damos la bienvenida!
-        </Text> */}
-        {/* <Image
-          borderRadius={10}
-          alt="imagen dona"
-          source={donut}
-          width={7}
-          height={7}
-        /> */}
-      </Box>
-      <Box alignItems="center">
-        <Image
-          borderRadius={8}
-          alt="imagen logo"
-          source={img}
-          width={250}
-          height={180}
-        />
-        <Button
-          mt={6}
-          mb={3}
-          _text={{ color: "bot.blue", fontSize: 16 }}
-          _pressed={{ backgroundColor: "transparent" }}
-          borderWidth="1"
-          borderColor="#d45f83"
-          borderRadius={7}
-          width="65%"
-          variant="outline"
-          onPress={() => navigation.navigate("login")}
-        >
+    <SafeAreaView style={theme.layout.container}>
+      <View style={{ alignSelf: "center", marginVertical: theme.layout.safePadding }}>
+        <Text style={theme.fonts.headlineMedium}>Botonera de audios</Text>
+      </View>
+      <View style={{ marginVertical: theme.layout.safePadding }}>
+        <Img source={img} marginHorizontal={theme.layout.safePadding * 2} />
+      </View>
+      <View style={{ marginVertical: 4 }}>
+        <Button mode="contained" onPress={() => navigation.navigate("login")}>
           Ingresar
         </Button>
-        <Button
-          borderRadius={7}
-          _text={{ color: "bot.blue", fontSize: 16 }}
-          _pressed={{ backgroundColor: "transparent" }}
-          borderWidth="1"
-          borderColor="#d45f83"
-          width="65%"
-          variant="outline"
-          onPress={() => navigation.navigate("register")}
-        >
+      </View>
+      <View style={{ marginVertical: 4 }}>
+        <Button mode="elevated" onPress={() => navigation.navigate("register")}>
           Registrarme
         </Button>
-      </Box>
+      </View>
+
       {/* <SignOutButton /> */}
     </SafeAreaView>
   );

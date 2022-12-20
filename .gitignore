@@ -1,8 +1,10 @@
 node_modules
 
 /ios/Pods
+/ios/botonera.xcworkspace
 
 /android/.gradle
+/android/app
 
 .vscode
 

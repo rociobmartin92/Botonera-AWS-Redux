@@ -1,42 +1,43 @@
-import { Box, Button, Input, Text } from "native-base";
-import React, { useState } from "react";
-
+import React from "react";
 import { Auth } from "aws-amplify";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { usePaperTheme } from "../theme/types";
+import { Spacing } from "../theme";
+import { View, Text } from "react-native";
+import { CredentialFields, FormSubmitButton } from "ui";
+import { useNavigation } from "@react-navigation/native";
+
+type LoginFormValues = {
+  username: string;
+  password: string;
+};
 
 const Login = () => {
-  
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const navigator = useNavigation();
+  const theme = usePaperTheme();
+  const initialValues: LoginFormValues = {
+    username: "",
+    password: "",
+  };
 
-  async function signIn() {
+  async function handleSubmit({ username, password }: LoginFormValues) {
     try {
       const user = await Auth.signIn(username, password);
+      navigator.navigate({ name: "home" });
     } catch (error) {
       console.log("error signing in", error);
     }
   }
 
   return (
-    <Box mx={10}>
-      <Text>Iniciar Sesión</Text>
-      <Box my={3}>
-        <Text>Usuario</Text>
-        <Input
-          variant="underlined"
-          placeholder="Ingresá tu nombre de usuario"
-          onChangeText={(user) => setUsername(user)}
-        />
-      </Box>
-      <Box>
-        <Text>Contraseña</Text>
-        <Input
-          variant="underlined"
-          placeholder="Ingresá tu contraseña"
-          onChangeText={(pass) => setPassword(pass)}
-        />
-        <Button onPress={() => signIn()}> Iniciar Sesión</Button>
-      </Box>
-    </Box>
+    <SafeAreaView style={theme.layout.container}>
+      <View style={{ marginBottom: Spacing.md }}>
+        <Text style={theme.fonts.headlineMedium}>Iniciar Sesión</Text>
+      </View>
+      <CredentialFields initialValues={initialValues} onSubmit={handleSubmit}>
+        <FormSubmitButton>Iniciar Sesión</FormSubmitButton>
+      </CredentialFields>
+    </SafeAreaView>
   );
 };
 

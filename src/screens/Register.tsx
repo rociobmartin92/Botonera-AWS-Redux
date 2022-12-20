@@ -2,6 +2,7 @@ import { Box, Button, Input, Text } from "native-base";
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
 import { Hub } from "aws-amplify";
+import { SafeAreaView } from "react-native";
 
 const Register = ({ navigation }: any) => {
   const [username, setUsername] = useState("");
@@ -51,47 +52,45 @@ const Register = ({ navigation }: any) => {
   }
 
   return (
-    <Box mx={10}>
-      <Text>Registro</Text>
-      <Box>
-        <Text>Usuario</Text>
-        <Input
-          variant="underlined"
-          placeholder="Ingresá un nombre de usuario"
-          onChangeText={(user) => setUsername(user)}
-        />
-      </Box>
-      <Box my={3}>
-        <Text>Email</Text>
-        <Input
-          variant="underlined"
-          placeholder="Ingresá tu email"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </Box>
-      <Box>
-        <Text>Contraseña</Text>
-        <Input
-          type="password"
-          variant="underlined"
-          placeholder="Ingresá una contraseña mayor a 6 dígitos con una letra mayúscula"
-          onChangeText={(pass) => setPassword(pass)}
-        />
-      </Box>
-
-      <Button onPress={() => signUp()}> Crear usuario</Button>
-      {codeSection && (
+    <SafeAreaView>
+      <Box mx={10}>
+        <Text>Registro</Text>
         <Box>
-          <Text>Código</Text>
+          <Text>Usuario</Text>
           <Input
             variant="underlined"
-            placeholder="Ingresá el código recibido en tu email"
-            onChangeText={(emailCode) => setCode(emailCode)}
+            placeholder="Ingresá un nombre de usuario"
+            onChangeText={(user) => setUsername(user)}
           />
-          <Button onPress={() => confirmSignUp()}> Confirmar</Button>
         </Box>
-      )}
-    </Box>
+        <Box my={3}>
+          <Text>Email</Text>
+          <Input variant="underlined" placeholder="Ingresá tu email" onChangeText={(email) => setEmail(email)} />
+        </Box>
+        <Box>
+          <Text>Contraseña</Text>
+          <Input
+            type="password"
+            variant="underlined"
+            placeholder="Ingresá una contraseña mayor a 6 dígitos con una letra mayúscula"
+            onChangeText={(pass) => setPassword(pass)}
+          />
+        </Box>
+
+        <Button onPress={() => signUp()}> Crear usuario</Button>
+        {codeSection && (
+          <Box>
+            <Text>Código</Text>
+            <Input
+              variant="underlined"
+              placeholder="Ingresá el código recibido en tu email"
+              onChangeText={(emailCode) => setCode(emailCode)}
+            />
+            <Button onPress={() => confirmSignUp()}> Confirmar</Button>
+          </Box>
+        )}
+      </Box>
+    </SafeAreaView>
   );
 };
 
