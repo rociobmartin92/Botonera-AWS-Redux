@@ -4,7 +4,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import { Provider as PaperProvider } from "react-native-paper";
 import { nativeBaseTheme, paperTheme } from "./src/theme";
 import RootNavigation from "./src/stack";
-import { Amplify } from "aws-amplify";
+import { Amplify, Auth, DataStore } from "aws-amplify";
 import awsconfig from "./src/aws-exports";
 import { Authenticator } from "@aws-amplify/ui-react-native";
 import { NativeBaseProvider } from "native-base";

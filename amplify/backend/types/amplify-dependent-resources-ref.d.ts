@@ -1,6 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
-    "auth": {
+    "api": {
         "Botonera": {
+            "GraphQLAPIKeyOutput": "string",
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
+        }
+    },
+    "auth": {
+        "botonera1974442b": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -8,6 +15,12 @@ export type AmplifyDependentResourcesAttributes = {
             "UserPoolName": "string",
             "AppClientIDWeb": "string",
             "AppClientID": "string"
+        }
+    },
+    "storage": {
+        "s3botonerastorageae6e8998": {
+            "BucketName": "string",
+            "Region": "string"
         }
     }
 }

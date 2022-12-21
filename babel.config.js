@@ -9,6 +9,7 @@ module.exports = {
         alias: {
           ui: "./src/ui/index",
           theme: "./src/theme/index",
+          hooks: "./src/hooks/index",
         },
       },
     ],

@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3botonerastorageae6e8998",
+  "bucketName": "botonera-storage-ae6e8998",
+  "policyUUID": "e7192ce6",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

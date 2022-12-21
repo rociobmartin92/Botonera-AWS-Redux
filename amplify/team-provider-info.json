@@ -1,4 +1,30 @@
 {
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-botonera-dev-192644-authRole",
+      "UnauthRoleArn": "arn:aws:iam::344837031447:role/amplify-botonera-dev-192644-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::344837031447:role/amplify-botonera-dev-192644-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-botonera-dev-192644-deployment",
+      "UnauthRoleName": "amplify-botonera-dev-192644-unauthRole",
+      "StackName": "amplify-botonera-dev-192644",
+      "StackId": "arn:aws:cloudformation:sa-east-1:344837031447:stack/amplify-botonera-dev-192644/1e2b3c40-7a6c-11ed-b551-0611197612b4",
+      "AmplifyAppId": "d2a5e6cgrr2szr"
+    },
+    "categories": {
+      "auth": {
+        "Botonera": {},
+        "botonera6d42cf19": {},
+        "botonera1974442b": {}
+      },
+      "api": {
+        "Botonera": {}
+      },
+      "storage": {
+        "s3botonerastorageae6e8998": {}
+      }
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-botonera-staging-05824-authRole",

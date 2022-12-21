@@ -6,6 +6,7 @@ import Home from "../screens/Home";
 import Register from "../screens/Register";
 import ForgotPassword from "../screens/ForgotPassword";
 import Welcome from "../screens/Welcome";
+import CodeConfirmation from "../screens/CodeConfirmation";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,13 @@ const RootNavigation = () => {
           }}
           component={Welcome}
         />
-        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{
+            headerBackVisible: false,
+          }}
+        />
         <Stack.Screen name="login" component={Login} options={{ title: "" }} />
         <Stack.Screen
           name="register"
@@ -28,6 +35,13 @@ const RootNavigation = () => {
             title: "Registrate",
           }}
           component={Register}
+        />
+        <Stack.Screen
+          name="codeConfirmation"
+          options={{
+            title: "",
+          }}
+          component={CodeConfirmation}
         />
         <Stack.Screen name="password" component={ForgotPassword} />
       </Stack.Navigator>

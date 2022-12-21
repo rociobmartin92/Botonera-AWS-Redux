@@ -1,0 +1,19 @@
+type Authors @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  profile_image: String
+  created_at: AWSDateTime
+  AuthorsAudios: [Audios] @hasMany(indexName: "byAuthors", fields: ["id"])
+  updated_at: AWSDateTime
+}
+
+type Audios @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  duration: Int
+  created_at: AWSDateTime
+  updated_at: AWSDateTime
+  created_by: ID
+  updated_by: ID
+  authorID: ID! @index(name: "byAuthors")
+}

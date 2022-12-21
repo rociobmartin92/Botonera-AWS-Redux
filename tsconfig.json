@@ -23,6 +23,8 @@
     "baseUrl": "./",
     "paths": {
       "ui": ["src/ui/index"],
+      "models/*": ["src/models/*"],
+      "hooks/*": ["src/hooks/*"],
       "theme": ["src/theme/index"]
     }
   }

@@ -1,9 +1,12 @@
 import { SafeAreaView, View, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Img } from "ui";
 import { Button } from "react-native-paper";
 import { useAuthenticator } from "@aws-amplify/ui-react-native";
 import { usePaperTheme } from "../theme/types";
+import { Auth } from "aws-amplify";
+import { useNavigation } from "@react-navigation/native";
+import { useCallback } from "react";
 
 function SignOutButton() {
   const { signOut } = useAuthenticator();
@@ -14,6 +17,23 @@ const img = require("../assets/boots.jpeg");
 
 const Welcome = ({ navigation }: any) => {
   const theme = usePaperTheme();
+  const navigator = useNavigation();
+
+  const checkAuth = useCallback(async () => {
+    const result = await Auth.currentAuthenticatedUser();
+    return result;
+  }, []);
+
+  useEffect(() => {
+    checkAuth().then((res) => {
+      console.log("user", res.username, "is logged in");
+      const token = res.signInUserSession.idToken.jwtToken;
+      const isUserLoggedIn = Boolean(token);
+      if (isUserLoggedIn) {
+        navigator.navigate({ name: "home" });
+      }
+    });
+  }, [navigator]);
 
   return (
     <SafeAreaView style={theme.layout.container}>

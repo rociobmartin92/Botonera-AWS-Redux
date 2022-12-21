@@ -1,17 +1,25 @@
-import { Box, Button, Input, Text } from "native-base";
-import React, { useState } from "react";
+import React from "react";
 import { Auth } from "aws-amplify";
-import { Hub } from "aws-amplify";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
+import { usePaperTheme } from "../theme/types";
+import { CredentialFields, FormSubmitButton, FormTextInput } from "ui";
+import { Text } from "react-native-paper";
+
+type RegisterFormValues = {
+  username: string;
+  password: string;
+  email: string;
+};
 
 const Register = ({ navigation }: any) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [codeSection, setCodeSection] = useState(false);
-  const [code, setCode] = useState("");
+  const theme = usePaperTheme();
+  const initialValues: RegisterFormValues = {
+    username: "",
+    password: "",
+    email: "",
+  };
 
-  async function signUp() {
+  async function handleSubmit({ username, password, email }: RegisterFormValues) {
     try {
       const { user } = await Auth.signUp({
         username,
@@ -23,73 +31,24 @@ const Register = ({ navigation }: any) => {
           enabled: true,
         },
       });
-      console.log(JSON.stringify(user, null, " "));
-      setCodeSection(true);
+
+      navigation.navigate("codeConfirmation", { username });
     } catch (error) {
       console.log("error signing up:", error);
     }
   }
 
-  async function confirmSignUp() {
-    try {
-      await Auth.confirmSignUp(username, code);
-      navigation.navigate("login");
-    } catch (error) {
-      console.log("error confirming sign up", error);
-    }
-  }
-
-  function listenToAutoSignInEvent() {
-    Hub.listen("auth", ({ payload }) => {
-      const { event } = payload;
-      if (event === "autoSignIn") {
-        const user = payload.data;
-        // assign user
-      } else if (event === "autoSignIn_failure") {
-        // redirect to sign in page
-      }
-    });
-  }
-
   return (
-    <SafeAreaView>
-      <Box mx={10}>
-        <Text>Registro</Text>
-        <Box>
-          <Text>Usuario</Text>
-          <Input
-            variant="underlined"
-            placeholder="Ingresá un nombre de usuario"
-            onChangeText={(user) => setUsername(user)}
-          />
-        </Box>
-        <Box my={3}>
-          <Text>Email</Text>
-          <Input variant="underlined" placeholder="Ingresá tu email" onChangeText={(email) => setEmail(email)} />
-        </Box>
-        <Box>
-          <Text>Contraseña</Text>
-          <Input
-            type="password"
-            variant="underlined"
-            placeholder="Ingresá una contraseña mayor a 6 dígitos con una letra mayúscula"
-            onChangeText={(pass) => setPassword(pass)}
-          />
-        </Box>
-
-        <Button onPress={() => signUp()}> Crear usuario</Button>
-        {codeSection && (
-          <Box>
-            <Text>Código</Text>
-            <Input
-              variant="underlined"
-              placeholder="Ingresá el código recibido en tu email"
-              onChangeText={(emailCode) => setCode(emailCode)}
-            />
-            <Button onPress={() => confirmSignUp()}> Confirmar</Button>
-          </Box>
-        )}
-      </Box>
+    <SafeAreaView style={theme.layout.container}>
+      <View style={{ marginBottom: theme.layout.spacing.md }}>
+        <Text style={theme.fonts.headlineMedium}>Registro</Text>
+      </View>
+      <CredentialFields initialValues={initialValues} onSubmit={handleSubmit}>
+        <View style={theme.layout.inputContainer}>
+          <FormTextInput label="Email" name="email" mode="outlined" placeholder="Ingresá tu email" />
+        </View>
+        <FormSubmitButton>Crear usuario</FormSubmitButton>
+      </CredentialFields>
     </SafeAreaView>
   );
 };
