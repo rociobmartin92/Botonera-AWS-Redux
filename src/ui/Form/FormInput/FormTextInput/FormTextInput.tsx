@@ -26,6 +26,7 @@ const FormTextInput = ({ type = "text", render, ...props }: FormTextInputProps) 
   return (
     <>
       <NativeTextInput
+        {...props}
         render={render}
         value={field.value}
         onBlur={() => helpers.setTouched(!meta.touched)}

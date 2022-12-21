@@ -41,6 +41,7 @@ export const paperTheme = {
     container: {
       // alignSelf: "center" as FlexAlignType,
       marginHorizontal: Spacing.md,
+      // marginTop: Spacing.sm,
     },
     inputContainer: {
       marginBottom: Spacing.md,

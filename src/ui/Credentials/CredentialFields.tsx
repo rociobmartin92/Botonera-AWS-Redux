@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import { FormTextInput, FormPasswordInput, Form } from "ui";
 import { usePaperTheme } from "../../theme/types";
 import { FormProps } from "../Form/Form";
@@ -22,11 +22,9 @@ const CredentialFields = ({ children, initialValues, onSubmit }: CredentialField
   return (
     <Form initialValues={initialValues} onSubmit={onSubmit}>
       <View style={theme.layout.inputContainer}>
-        <Text>Usuario</Text>
         <FormTextInput label="Username" name="username" mode="outlined" placeholder="Ingresá tu nombre de usuario" />
       </View>
       <View style={theme.layout.inputContainer}>
-        <Text>Contraseña</Text>
         <FormPasswordInput label="Password" name="password" mode="outlined" placeholder="Ingresá tu contraseña" />
       </View>
       {children}
